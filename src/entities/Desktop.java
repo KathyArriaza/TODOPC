@@ -48,7 +48,7 @@ public class Desktop extends Equipo {
                 "Modelo: " + modelo + "\n" +
                 "Microprocesador: " + microprocesador + "\n" +
                 "Memoria: " + memoria + "\n" +
-                "Tarjeta Gráfica: " + tarjetaGrafica + "\n" +
+                "Tarjeta Grafica: " + tarjetaGrafica + "\n" +
                 "Tamanio de Torre: " + tamanioTorre + "\n" +
                 "Capacidad de Disco Duro: " + capacidadDiscoDuro;
     }
