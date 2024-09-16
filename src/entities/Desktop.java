@@ -2,17 +2,17 @@ package entities;
 
 public class Desktop extends Equipo {
     private String tarjetaGrafica;
-    private String tamanoTorre;
+    private String tamanioTorre;
     private String capacidadDiscoDuro;
 
     // Constructor
     public Desktop(String fabricante, String modelo, String microprocesador, String memoria,
-                   String tarjetaGrafica, String tamanoTorre, String capacidadDiscoDuro) {
+                   String tarjetaGrafica, String tamanioTorre, String capacidadDiscoDuro) {
         
         // Llamada al constructor de la clase padre (Equipo)
         super(fabricante, modelo, microprocesador, memoria);
         this.tarjetaGrafica = tarjetaGrafica;
-        this.tamanoTorre = tamanoTorre;
+        this.tamanioTorre = tamanioTorre;
         this.capacidadDiscoDuro = capacidadDiscoDuro;
     }
 
@@ -26,11 +26,11 @@ public class Desktop extends Equipo {
     }
 
     public String getTamanoTorre() {
-        return tamanoTorre;
+        return tamanioTorre;
     }
 
-    public void setTamanoTorre(String tamanoTorre) {
-        this.tamanoTorre = tamanoTorre;
+    public void setTamanoTorre(String tamanioTorre) {
+        this.tamanioTorre = tamanioTorre;
     }
 
     public String getCapacidadDiscoDuro() {
@@ -49,7 +49,7 @@ public class Desktop extends Equipo {
                 "Microprocesador: " + microprocesador + "\n" +
                 "Memoria: " + memoria + "\n" +
                 "Tarjeta Gráfica: " + tarjetaGrafica + "\n" +
-                "Tamaño de Torre: " + tamanoTorre + "\n" +
+                "Tamanio de Torre: " + tamanioTorre + "\n" +
                 "Capacidad de Disco Duro: " + capacidadDiscoDuro;
     }
 }
