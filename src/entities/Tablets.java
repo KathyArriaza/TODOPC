@@ -1,13 +1,17 @@
+package entities;
+
+import entities.Equipo;
+
 public class Tablets extends Equipo {
-    private double tamanioPantalla;
+    private String tamanioPantalla;
     private String tipoPantalla;
-    private int tamanioMemoriaNAND;
+    private String tamanioMemoriaNAND;
     private String sistemaOperativo;
 
     // Constructor
     public Tablets(String fabricante, String modelo, String microprocesador,
-                   double tamanioPantalla, String tipoPantalla,
-                   int tamanioMemoriaNAND, String sistemaOperativo) {
+                   String tamanioPantalla, String tipoPantalla,
+                   String tamanioMemoriaNAND, String sistemaOperativo) {
         super(fabricante, modelo, microprocesador, "Memoria NAND: " + tamanioMemoriaNAND + " GB");
         this.tamanioPantalla = tamanioPantalla;
         this.tipoPantalla = tipoPantalla;
@@ -15,7 +19,7 @@ public class Tablets extends Equipo {
         this.sistemaOperativo = sistemaOperativo;
     }
 
-    public double getTamanioPantalla() {
+    public String getTamanioPantalla() {
         return tamanioPantalla;
     }
 
@@ -23,7 +27,7 @@ public class Tablets extends Equipo {
         return tipoPantalla;
     }
 
-    public int getTamanioMemoriaNAND() {
+    public String getTamanioMemoriaNAND() {
         return tamanioMemoriaNAND;
     }
 
@@ -31,14 +35,9 @@ public class Tablets extends Equipo {
         return sistemaOperativo;
     }
 
+
     @Override
-    public String toString() {
-        return "Fabricante: " + getFabricante() + "\n" +
-                "Modelo: " + getModelo() + "\n" +
-                "Microprocesador: " + getMicroprocesador() + "\n" +
-                "Tamaño diagonal de pantalla: " + tamanioPantalla + "”\n" +
-                "Tipo de pantalla: " + tipoPantalla + "\n" +
-                "Tamaño memoria NAND: " + tamanioMemoriaNAND + " GB\n" +
-                "Sistema Operativo: " + sistemaOperativo;
+    public String mostrarDetalles() {
+        return null;
     }
 }
