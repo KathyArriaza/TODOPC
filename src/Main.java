@@ -4,6 +4,8 @@ import entities.Tablets;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class Main {
                     opcionesMenu[0]
             );
 
-            if (seleccionOpcion == -1) { // Usuario cierra el diálogo
+            if (seleccionOpcion == -1) {
                 continuar = false;
                 break;
             }
@@ -102,7 +104,7 @@ public class Main {
                 );
 
                 listaDesktops.add(nuevoDesktop);
-                JOptionPane.showMessageDialog(null, "Desktop registrado exitosamente!!!!da");
+                JOptionPane.showMessageDialog(null, "Desktop registrado exitosamente!!!");
 
                 break;
             case "Laptop":
@@ -158,9 +160,9 @@ public class Main {
         String[] columnas;
 
         if (!equipo.equals("Tablet")) {
-            columnas = new String[]{"Fabricante", "Microprocesador", "Memoria"};
+            columnas = new String[]{"Fabricante", "Modelo", "Microprocesador", "Memoria"};
         } else {
-            columnas = new String[]{"Fabricante", "Microprocesador"};
+            columnas = new String[]{"Fabricante", "Modelo", "Microprocesador"};
         }
 
         DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
@@ -176,6 +178,7 @@ public class Main {
                     modelo.addRow(new Object[]{
 
                             desktop.getFabricante(),
+                            desktop.getModelo(),
                             desktop.getMicroprocesador(),
                             desktop.getMemoria(),
                             desktop.getTarjetaGrafica(),
@@ -192,6 +195,7 @@ public class Main {
                 for (Laptops laptop : listaLaptops) {
                     modelo.addRow(new Object[]{
                             laptop.getFabricante(),
+                            laptop.getModelo(),
                             laptop.getMicroprocesador(),
                             laptop.getMemoria(),
                             laptop.getTamanioDePantalla(),
@@ -209,6 +213,7 @@ public class Main {
                 for (Tablets tablet : listaTablets) {
                     modelo.addRow(new Object[]{
                             tablet.getFabricante(),
+                            tablet.getModelo(),
                             tablet.getMicroprocesador(),
                             tablet.getTamanioPantalla(),
                             tablet.getTipoPantalla(),
@@ -223,7 +228,20 @@ public class Main {
 
         JTable tabla = new JTable(modelo);
         tabla.setFillsViewportHeight(true);
+
+        // Se hace ciclo para ajustar el tamaño de las columnas
+        for (int i = 0; i < modelo.getColumnCount(); i++) {
+            int width = 0;
+            for (int j = 0; j < modelo.getRowCount(); j++) {
+                TableCellRenderer renderer = tabla.getCellRenderer(j, i);
+                Component comp = renderer.getTableCellRendererComponent(tabla, modelo.getValueAt(j, i), false, false, j, i);
+                width = Math.max(width, comp.getPreferredSize().width);
+            }
+            tabla.getColumnModel().getColumn(i).setPreferredWidth(width + 10); // +10 para padding
+        }
+
         JScrollPane scrollPane = new JScrollPane(tabla);
+        scrollPane.setPreferredSize(new Dimension(900, 600)); // Ajusta el tamaño según necesites
 
         JOptionPane.showMessageDialog(
                 null,
